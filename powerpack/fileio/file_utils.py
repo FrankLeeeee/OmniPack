@@ -22,10 +22,12 @@ def create_workspace(workspace_path: str):
     os.makedirs(workspace_path, exist_ok=True)
 
 
-def read_folder_content(folder_path: str):
+def find_files(folder_path: str, pattern: str, maxdepth: int = 1):
     """
     Read the absolute path of files under a folder
+    TODO: make it recursive
     """
+
     assert isinstance(folder_path, str), 'folder path must be a string'
 
     res = []
@@ -45,4 +47,3 @@ def write_lines_into_file(lines, file_path: str):
     with open(file_path, 'w') as f:
         for line in lines:
             f.write('{}\n'.format(line))
-

@@ -22,3 +22,8 @@ def get_host():
         host = '-1'
 
     return host
+
+
+def kill_port_connection():
+    pass
+
