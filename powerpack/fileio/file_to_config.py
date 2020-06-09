@@ -1,3 +1,7 @@
+from .file_conversion import yaml2dict, py2dict, json2dict
+import os.path as osp
+
+
 class DictWrapper(dict):
     """
     Wrap a dictionary object so that we can access
@@ -22,20 +26,21 @@ class ConfigLoader(object):
 
     @staticmethod
     def from_file(file_path: str):
-        pass
+        assert isinstance(file_path, str)
+        extension = osp.splitext(file_path)[1].lower()
 
-    @staticmethod
-    def _from_yaml(file_path: str):
-        pass
+        if extension == '.py':
+            dictionary = py2dict(file_path)
+        elif extension == '.yaml':
+            dictionary = yaml2dict(file_path)
+        elif extension == '.json':
+            dictionary = json2dict(file_path)
+        else:
+            raise Exception('File type is not supported yet.')
 
-    @staticmethod
-    def _from_json(file_path: str):
-        pass
-
-    @staticmethod
-    def _from_python(file_path: str):
-        pass
+        return DictWrapper(dictionary)
 
     @staticmethod
     def from_dict(dictionary: dict):
+        assert isinstance(dictionary, dict)
         return DictWrapper(dictionary)
