@@ -1,8 +1,9 @@
 import os
 import os.path as osp
+import re
 
 
-def read_all_lines(file_path: str):
+def read_lines(file_path: str):
     """
     Read the file line by line
     """
@@ -14,7 +15,7 @@ def read_all_lines(file_path: str):
         return lines
 
 
-def create_workspace(workspace_path: str):
+def mkdir(workspace_path: str):
     """
     Create workspace
     """
@@ -29,15 +30,29 @@ def find_files(folder_path: str, pattern: str, maxdepth: int = 1):
     """
 
     assert isinstance(folder_path, str), 'folder path must be a string'
+    assert maxdepth >= 0
+
+    if maxdepth == 0:
+        return []
 
     res = []
     for file_name in os.listdir(folder_path):
-        file_abs_path = osp.join(folder_path, file_name)
-        res.append(file_abs_path)
+
+        if file_name.startswith('__') or file_name.startswith('.'):
+            continue
+
+        abs_path = osp.join(folder_path, file_name)
+
+        if osp.isfile(abs_path):
+            if re.search(pattern, file_name):
+                res.append(abs_path)
+        elif osp.isdir(abs_path):
+            sub_list = find_files(abs_path, pattern, maxdepth-1)
+            res += sub_list
     return res
 
 
-def write_lines_into_file(lines, file_path: str):
+def write_lines(lines, file_path: str):
     """
     Write lines into a file
     """

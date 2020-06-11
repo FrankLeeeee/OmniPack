@@ -11,14 +11,14 @@ def tsv2csv(src_tsv_path: str, dst_csv_path: str):
     Convert tsv file to csv file
     """
     csv_table = pd.read_table(src_tsv_path, sep='\t')
-    csv_table.to_csv(dst_csv_path, index=False)
+    csv_table.to_csv(dst_csv_path, index=False, sep=',')
 
 
 def csv2tsv(src_csv_path: str, dst_tsv_path: str):
     """
     Convert csv file to tsv file
     """
-    csv_table = pd.read_csv(dst_tsv_path)
+    csv_table = pd.read_csv(src_csv_path)
     csv_table.to_csv(dst_tsv_path, index=False, sep='\t')
 
 
@@ -36,6 +36,8 @@ def py2dict(py_path: str):
     """
     Read python file as python dictionary
     """
+
+    py_path = osp.abspath(py_path)
     parent_dir = osp.dirname(py_path)
     if parent_dir not in sys.path:
         sys.path.insert(0, parent_dir)
