@@ -10,6 +10,8 @@ def tsv2csv(src_tsv_path: str, dst_csv_path: str):
     """
     Convert tsv file to csv file
     """
+    assert src_tsv_path.endswith('.tsv')
+
     csv_table = pd.read_table(src_tsv_path, sep='\t')
     csv_table.to_csv(dst_csv_path, index=False, sep=',')
 
@@ -18,6 +20,8 @@ def csv2tsv(src_csv_path: str, dst_tsv_path: str):
     """
     Convert csv file to tsv file
     """
+    assert src_csv_path.endswith('.csv')
+
     csv_table = pd.read_csv(src_csv_path)
     csv_table.to_csv(dst_tsv_path, index=False, sep='\t')
 
@@ -26,6 +30,8 @@ def yaml2dict(yaml_path: str):
     """
     Read yaml file as python dictionary
     """
+    assert yaml_path.endswith('.yml') or yaml_path.endswith('.yaml')
+
     with open(yaml_path) as f:
         doc = yaml.full_load(f)
     return doc
@@ -36,6 +42,8 @@ def py2dict(py_path: str):
     """
     Read python file as python dictionary
     """
+
+    assert py_path.endswith('.py')
 
     py_path = osp.abspath(py_path)
     parent_dir = osp.dirname(py_path)
@@ -60,6 +68,9 @@ def json2dict(json_path: str):
     """
     Read json file as python dictionary
     """
+
+    assert json_path.endswith('.json')
+
     with open(json_path, 'r') as f:
         doc = json.load(f)
     return doc
