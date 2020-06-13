@@ -8,7 +8,7 @@ class Timer():
         self._interval_count = 0
 
     @property
-    def running(self):
+    def is_running(self):
         return self._running
 
     @property
