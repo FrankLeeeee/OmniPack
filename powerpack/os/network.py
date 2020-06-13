@@ -1,4 +1,5 @@
 import socket
+import os
 
 
 def get_hostname():
@@ -24,6 +25,25 @@ def get_host():
     return host
 
 
-def kill_port_connection():
-    pass
+def is_port_available(port: int, host="0.0.0.0"):
+    """
+    Check if a port is available
+    """
+    assert isinstance(port, int)
 
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    result = True
+    try:
+        sock.bind((host, port))
+    except:
+        result = False
+    sock.close()
+    return result
+
+
+def kill_port(port: int):
+    """
+    Kill a process which listening to a port
+    """
+    os.system('fuser -k {}/tcp'.format(port))
+    pass
