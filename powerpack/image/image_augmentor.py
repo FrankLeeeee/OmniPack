@@ -46,7 +46,7 @@ class ImageAugmentor(object):
             for i in range(times):
                 img_temp = img.copy()
                 for trans in self._augmentation:
-                    img_temp = trans(img_temp)
+                    img_temp, _ = trans(img_temp)
                 img_save_path = osp.join(
                     output_path, '{}_{}_{}'.format(img_id, i, img_name))
 

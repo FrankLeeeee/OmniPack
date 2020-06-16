@@ -20,6 +20,9 @@ class ImageAnnotator(object):
     def image(self):
         return self._img.convert('RGB')
 
+    def save(self, img_path):
+        self._img.convert('RGB').save(img_path)
+
     def draw_line(self,
                   points: list,
                   fill: str = None,
@@ -34,7 +37,8 @@ class ImageAnnotator(object):
 
     def draw_rectangle(self,
                        points: list,
-                       fill: str = None,
+                       outline: str = None,
+                       width: int = 1,
                        text: str = None,
                        text_fill: str = None):
         """
@@ -48,7 +52,7 @@ class ImageAnnotator(object):
         if len(points) == 4:
             points = [points[0], points[2]]
 
-        self._img_draw.rectangle(points, fill=fill)
+        self._img_draw.rectangle(points, outline=outline, width=width)
 
         if text is not None:
             assert isinstance(text, str)
@@ -59,7 +63,7 @@ class ImageAnnotator(object):
 
     def draw_polygon(self,
                      points: list,
-                     fill: str = None,
+                     outline: str = None,
                      width: int = 1,
                      text: str = None,
                      text_fill: str = None):
@@ -73,7 +77,7 @@ class ImageAnnotator(object):
         for i in range(len(points)):
             line_pts = (points[i], points[(i+1) % len(points)])
             self.draw_line(points=line_pts,
-                           fill=fill,
+                           fill=outline,
                            width=width
                            )
 
