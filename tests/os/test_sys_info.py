@@ -1,5 +1,6 @@
 import powerpack
 import os
+import pytest
 
 
 def test_get_memory_state():
