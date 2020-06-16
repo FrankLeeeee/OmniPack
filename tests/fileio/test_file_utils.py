@@ -29,10 +29,10 @@ def test_find_files():
     assert len(res1) == 0
 
     res2 = powerpack.find_files(BASE_DIR, '.py$', 2)
-    assert len(res2) == 3
+    assert len(res2) == 5
 
     res3 = powerpack.find_files(BASE_DIR, '.py$', 3)
-    assert len(res3) == 4
+    assert len(res3) == 6
 
 
 def test_write_lines():
