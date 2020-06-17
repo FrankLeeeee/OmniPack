@@ -18,6 +18,7 @@ if __name__ == '__main__':
         version=omnipack.__version__,
         description='A robust collection of useful scripts',
         long_description=readme(),
+        long_description_content_type="text/markdown",
         author='Li Shenggui',
         author_email='somerlee.9@gmail.com',
         url='https://github.com/FrankLeeeee/powerpack',
