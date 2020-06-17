@@ -1,6 +1,6 @@
 from PIL import Image
 from .transformer import Transformer
-import powerpack
+import omnipack
 import os.path as osp
 
 
@@ -38,7 +38,7 @@ class ImageAugmentor(object):
         assert isinstance(times, int) and times > 0
         assert isinstance(output_path, str)
 
-        powerpack.mkdir(output_path)
+        omnipack.mkdir(output_path)
 
         for img_id, img_path in enumerate(self._imgs):
             img = Image.open(img_path)

@@ -1,4 +1,4 @@
-from powerpack import ConfigLoader
+from omnipack import ConfigLoader
 import pytest
 import os.path as osp
 

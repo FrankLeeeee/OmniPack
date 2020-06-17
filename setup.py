@@ -3,7 +3,7 @@ import os
 import subprocess
 import time
 from setuptools import find_packages, setup
-import powerpack
+import omnipack
 
 
 def readme():
@@ -14,8 +14,8 @@ def readme():
 
 if __name__ == '__main__':
     setup(
-        name='powerpack',
-        version=powerpack.__version__,
+        name='omnipack',
+        version=omnipack.__version__,
         description='A robust collection of useful scripts',
         long_description=readme(),
         author='Li Shenggui',
@@ -33,6 +33,6 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 3.7',
         ],
         license='Apache License 2.0',
-        install_requires=powerpack.read_lines('requirements/requirements.txt'),
+        install_requires=omnipack.read_lines('requirements/requirements.txt'),
         zip_safe=False,
-        entry_points={'console_scripts': ['powerpack = powerpack.command:cli']})
+        entry_points={'console_scripts': ['omnipack = omnipack.command:cli']})

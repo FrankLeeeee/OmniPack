@@ -1,5 +1,4 @@
-from powerpack import __version__
-import sys
+from omnipack import __version__
 import click
 from .aliased_group import AliasedGroup
 
