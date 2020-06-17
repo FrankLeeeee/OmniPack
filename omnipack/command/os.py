@@ -13,7 +13,7 @@ def kill_multiprocess(cmd):
 @click.command(help='Kill process with pid')
 @click.argument('pid')
 def kill_process(pid):
-    omnipack.kill_process(pid)
+    omnipack.kill_process(int(pid))
 
 
 # -------- network -------- #
@@ -21,13 +21,13 @@ def kill_process(pid):
 @click.command(help='Kill port connection')
 @click.argument('port')
 def kill_port(port):
-    omnipack.kill_port(port)
+    omnipack.kill_port(int(port))
 
 
 @click.command(help='Check port availability')
 @click.argument('port')
 def is_port_available(port):
-    avai = omnipack.is_port_available(port)
+    avai = omnipack.is_port_available(int(port))
     print(avai)
 
 
