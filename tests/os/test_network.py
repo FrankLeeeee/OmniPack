@@ -14,5 +14,5 @@ def test_get_host():
 
 
 def test_is_port_available():
-    avai = powerpack.is_port_available(80)
+    avai = powerpack.is_port_available(8000)
     assert avai == True
