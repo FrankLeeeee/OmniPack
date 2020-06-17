@@ -19,6 +19,8 @@ if __name__ == '__main__':
         description='A robust collection of useful scripts',
         long_description=readme(),
         author='Li Shenggui',
+        author_email='somerlee.9@gmail.com',
+        url='https://github.com/FrankLeeeee/powerpack',
         keywords='Python, scripts',
         packages=find_packages(),
         classifiers=[

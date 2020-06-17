@@ -9,4 +9,5 @@ install:
   - pip install -r ./requirements/requirements.txt
 
 script:
-  - pytest tests
+  - python setup.py -m -s
+  - python -m pytest tests
