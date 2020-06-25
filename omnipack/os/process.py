@@ -10,8 +10,8 @@ def kill_multiprocess(cmd: str):
 
     # kill processes with the same command
     os.system(
-        "for pid in $(ps - ef | grep {} | awk '{print $2}'); do kill - 9 $pid; done".format(cmd))
-    pass
+        'for pid in $(ps -ef | grep ' + cmd +
+        '| awk \'{print $2}\'); do kill -9 $pid; done')
 
 
 def kill_process(pid: str):
